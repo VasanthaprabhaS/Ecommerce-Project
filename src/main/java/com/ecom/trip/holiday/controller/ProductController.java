@@ -19,8 +19,13 @@ public class ProductController {
 
     @GetMapping(value = "/products")
     public List<Product> getAllProducts() {
-        System.out.println("get products");
         return productService.getAllProducts();
+    }
+
+    @GetMapping(value = "/products/{id}")
+    public Product getProductById (@PathVariable("id") String id)
+    {
+        return this.productService.findById(id);
     }
 
     @PostMapping(value = "/products")
@@ -39,9 +44,8 @@ public class ProductController {
     @DeleteMapping(value = "/products/{id}")
     public ResponseEntity<HttpStatus> deleteProduct (@PathVariable("id") String id)
     {
-        Optional<Product> existingProduct = this.productService.findById(id);
-        if(existingProduct.isPresent()){
-            System.out.println("Yes present");
+        Product existingProduct = this.productService.findById(id);
+        if(existingProduct.getId() != null){
             productService.deleteProduct(id);
             return ResponseEntity.ok().build();
         }

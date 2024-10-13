@@ -1,6 +1,7 @@
 package com.ecom.trip.holiday.service;
 
 import com.ecom.trip.holiday.Product;
+import com.ecom.trip.holiday.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> findById(String id) {
-        return productRepository.findById(id);
+    public Product findById(String id) {
+        return productRepository.findById(id)
+                .orElseThrow(
+                ()-> new ResourceNotFoundException());
     }
 
     public Product addProduct(Product product) {
