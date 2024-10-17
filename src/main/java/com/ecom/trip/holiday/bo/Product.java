@@ -1,7 +1,10 @@
-package com.ecom.trip.holiday;
+package com.ecom.trip.holiday.bo;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
@@ -17,9 +20,12 @@ public class Product {
 
     @Column(name = "name")
     @NotBlank(message = "Product Name is mandatory")
+    @NotEmpty
+    @Size(min = 2, max = 50)
     private String name;
     @Column(name = "price")
-    private double price;
+
+    private int price;
 
     @Override
     public String toString() {

@@ -1,13 +1,12 @@
 package com.ecom.trip.holiday.service;
 
-import com.ecom.trip.holiday.Product;
+import com.ecom.trip.holiday.bo.Product;
 import com.ecom.trip.holiday.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
