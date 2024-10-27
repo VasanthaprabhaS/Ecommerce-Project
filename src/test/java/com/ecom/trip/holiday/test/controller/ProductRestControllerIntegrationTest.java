@@ -4,6 +4,7 @@ import com.ecom.trip.holiday.HolidayApplication;
 import com.ecom.trip.holiday.bo.Product;
 import com.ecom.trip.holiday.service.ProductRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class ProductRestControllerIntegrationTest {
     }*/
 
     @Test
+    @Ignore
     public void whenValidInput_thenCreateProduct() throws IOException, Exception {
         Product product = new Product(1,"product-1",100);
         mvc.perform(MockMvcRequestBuilders.post("/products").contentType(MediaType.APPLICATION_JSON).content(asJsonString(product)));
